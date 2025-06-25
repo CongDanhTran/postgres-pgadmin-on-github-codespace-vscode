@@ -26,4 +26,4 @@ services:
       # host    all             all             0.0.0.0/0               trust
 
 volumes:
-  pg-data: 5050
+  pg-data: 
