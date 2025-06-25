@@ -6,21 +6,6 @@ services:
     volumes:
       - ./:/workspace:cached
 
-  pgadmin:
-    image: dpage/pgadmin4:8.9
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: devteds@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: devteds      
-      PGADMIN_CONFIG_WTF_CSRF_HEADERS: '["Referer", "Origin"]'
-      PGADMIN_CONFIG_WTF_CSRF_ENABLED: 'False'
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    ports:
-      - 5050:80
-    depends_on:
-      - db
-
   db:
     image: postgres:12.19
     restart: always          
@@ -30,6 +15,9 @@ services:
       POSTGRES_DB: demodb
     volumes:                 
       - pg-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    
 
     # POSTGRES_HOST_AUTH_METHOD: "trust"
     # PGHBA_CONF_CONTENT: |
@@ -38,5 +26,4 @@ services:
       # host    all             all             0.0.0.0/0               trust
 
 volumes:
-  pgadmin-data:
-  pg-data:
+  pg-data: 5433
