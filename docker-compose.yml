@@ -16,7 +16,7 @@ services:
     volumes:                 
       - pg-data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "5050:5432"
     
 
     # POSTGRES_HOST_AUTH_METHOD: "trust"
@@ -26,4 +26,4 @@ services:
       # host    all             all             0.0.0.0/0               trust
 
 volumes:
-  pg-data: 5433
+  pg-data: 5050
